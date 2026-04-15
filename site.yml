@@ -1,0 +1,4 @@
+---
+- import_playbook: create_users.yml
+- import_playbook: install_software.yml
+# - import_playbook: remove_users.yml

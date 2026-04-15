@@ -1,0 +1,23 @@
+---
+- name: Create users on all nodes
+  hosts: all
+  become: true
+  vars_files:
+    - vars/users.yml    # load the user list
+
+  tasks:
+    - name: Create users
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        state: present
+        shell: "{{ item.shell }}"
+        groups: "{{ item.groups }}"
+        create_home: yes
+      loop: "{{ users }}"     # iterate over the user list
+
+    - name: Add SSH public keys
+      ansible.posix.authorized_key:
+        user: "{{ item.name }}"
+        state: present
+        key: "{{ item.ssh_key }}"
+      loop: "{{ users }}"

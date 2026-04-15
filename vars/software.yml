@@ -1,0 +1,18 @@
+---
+r_packages:
+  - r-base
+  - r-base-dev
+
+apt_dependencies:
+  - build-essential
+  - gfortran
+  - libcurl4-openssl-dev
+  - libssl-dev
+  - libxml2-dev
+  - libicu-dev
+  - libfontconfig1-dev
+  - libcairo2-dev
+  - libxt-dev
+  - zlib1g-dev
+  - libbz2-dev
+  - liblzma-dev

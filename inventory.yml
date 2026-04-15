@@ -1,0 +1,8 @@
+all:
+  children:
+    workers:
+      hosts:
+        bibigrid-worker-n8h3jsn3ohtpu84-[0:1]
+    master: 
+        hosts: 
+          localhost

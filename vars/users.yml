@@ -1,0 +1,17 @@
+users:
+  - name: alice
+    groups: sudo
+    shell: /bin/bash
+    ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIORWnqwR+e980NbtvbYOqahkFs1UcQDb433e6+M9B6Gh ubuntu@bibigrid-master-n8h3jsn3ohtpu84
+  - name: bob
+    groups: sudo
+    shell: /bin/bash
+    ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIORWnqwR+e980NbtvbYOqahkFs1UcQDb433e6+M9B6Gh ubuntu@bibigrid-master-n8h3jsn3ohtpu84
+  - name: charlie
+    groups: users
+    shell: /bin/bash
+    ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIORWnqwR+e980NbtvbYOqahkFs1UcQDb433e6+M9B6Gh ubuntu@bibigrid-master-n8h3jsn3ohtpu84
+
+# Users to remove (keep their home directories with data)
+remove_users:
+  - charlie

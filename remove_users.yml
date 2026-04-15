@@ -1,0 +1,15 @@
+---
+- name: Remove users from all nodes
+  hosts: all
+  become: true
+  vars_files:
+    - vars/users.yml
+
+  tasks:
+    - name: Remove users (keep home directories)
+      ansible.builtin.user:
+        name: "{{ item }}"
+        state: absent
+        remove: no      # Do NOT remove home directory
+        force: no       # Do NOT force removal if process is running
+      loop: "{{ remove_users }}"

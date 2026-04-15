@@ -1,0 +1,39 @@
+---
+- name: Install R on all nodes
+  hosts: all
+  become: true
+  vars_files:
+    - vars/software.yml
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install system dependencies
+      apt:
+        name: "{{ apt_dependencies }}"
+        state: present
+
+    - name: Install R packages
+      apt:
+        name: "{{ r_packages }}"
+        state: present
+
+- name: Create R library directories on worker nodes
+  hosts: workers
+  become: true
+  vars_files:
+    - vars/users.yml
+    - vars/software.yml
+
+  tasks:
+    - name: Create R library directory for all users
+      file:
+        path: "/home/{{ item.name }}/R/x86_64-linux-gnu-library/{{ ansible_date_time.epoch | int | string[:4] }}"
+        state: directory
+        owner: "{{ item.name }}"
+        group: "{{ item.name | groupby(item.groups.split(',')[0]) | first }}"
+        mode: '0755'
+      loop: "{{ users }}"
