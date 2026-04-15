@@ -371,7 +371,7 @@ Removes users from worker nodes while preserving their home directories:
 
 | Filter | Purpose | Example |
 |--------|---------|---------|
-| `default()` | Provide default value | `{{ var | default(fallback) }}` |
+| `default()` | Provide default value | `{{ var \| default('fallback') }}` |
 | `bool` | Convert to boolean | `{{ 'true' \| bool }}` |
 | `upper/lower` | Case conversion | `{{ name \| upper }}` |
 | `length` | Get length | `{{ list \| length }}` |
